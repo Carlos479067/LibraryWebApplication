@@ -7,6 +7,7 @@ public class Book {
 
     @Id
     private String isbn;
+    private String genre;
 
 
 }
