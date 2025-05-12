@@ -2,6 +2,7 @@ package com.example.libraryapp.model;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import java.util.List;
 
 @Entity
@@ -15,6 +16,8 @@ public class Book {
     private String description;
     private String publishDate;
     private String thumbNail;
+    @OneToMany(mappedBy = "book")
+    private List<UserBooks> userBooks;
 
     public Book() {
 
@@ -76,5 +79,13 @@ public class Book {
 
     public void setAuthors(List<String> authors) {
         this.authors = authors;
+    }
+
+    public List<UserBooks> getUserBooks() {
+        return userBooks;
+    }
+
+    public void setUserBooks(List<UserBooks> userBooks) {
+        this.userBooks = userBooks;
     }
 }
