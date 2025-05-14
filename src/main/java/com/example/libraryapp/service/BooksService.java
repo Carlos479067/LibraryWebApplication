@@ -16,7 +16,6 @@ public class BooksService {
     }
 
     public Page<Book> getAllBooks(Pageable pageable) {
-        return booksRepository.findAll(PageRequest.of(0, 10));
-
+        return booksRepository.findAll(pageable);
     }
 }
