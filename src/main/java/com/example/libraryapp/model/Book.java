@@ -16,7 +16,7 @@ public class Book {
     private String description;
     private String publishDate;
     private String thumbNail;
-    @OneToMany(mappedBy = "books")
+    @OneToMany(mappedBy = "book")
     private List<UserBooks> userBooks;
 
     public Book() {

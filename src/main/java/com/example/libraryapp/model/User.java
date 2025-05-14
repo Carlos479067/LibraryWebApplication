@@ -12,7 +12,7 @@ public class User {
     private String lastName;
     private String email;
     private String password;
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "user")
     private List<UserBooks> userBooks;
 
     public User() {
