@@ -11,10 +11,12 @@ public class BooksService {
     private final BooksRepository booksRepository;
 
     public BooksService(BooksRepository booksRepository) {
+
         this.booksRepository = booksRepository;
     }
 
     public Page<Book> getAllBooks(Pageable pageable) {
+
         return booksRepository.findAll(pageable);
     }
 }

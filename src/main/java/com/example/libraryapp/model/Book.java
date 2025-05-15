@@ -1,8 +1,8 @@
 package com.example.libraryapp.model;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -12,20 +12,23 @@ public class Book {
     private String isbn;
     @ElementCollection
     private List<String> authors;
+    private String title;
     private String genre;
     private String description;
     private String publishDate;
     private String thumbNail;
     @OneToMany(mappedBy = "book")
+    @JsonManagedReference
     private List<UserBooks> userBooks;
 
     public Book() {
 
     }
 
-    public Book(String isbn, List<String> authors, String genre,
+    public Book(String isbn, String title, List<String> authors, String genre,
                 String description, String publishDate, String thumbNail) {
         this.isbn = isbn;
+        this.title = title;
         this.authors = authors;
         this.genre = genre;
         this.description = description;
@@ -35,6 +38,14 @@ public class Book {
 
     public String getIsbn() {
         return isbn;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setIsbn(String isbn) {

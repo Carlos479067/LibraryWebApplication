@@ -1,4 +1,5 @@
 package com.example.libraryapp.model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,6 +13,7 @@ public class UserBooks {
     private Book book;
     @ManyToOne
     @JoinColumn(name = "userId")
+    @JsonBackReference
     private User user;
 
     public UserBooks() {

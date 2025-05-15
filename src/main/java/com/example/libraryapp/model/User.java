@@ -1,4 +1,5 @@
 package com.example.libraryapp.model;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class User {
     private String email;
     private String password;
     @OneToMany(mappedBy = "user")
+    @JsonManagedReference
     private List<UserBooks> userBooks;
 
     public User() {
