@@ -12,7 +12,7 @@ public class UserBooks {
     @JoinColumn(name = "bookId")
     private Book book;
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id")
     @JsonBackReference
     private User user;
 

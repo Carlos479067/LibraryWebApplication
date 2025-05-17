@@ -8,7 +8,8 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long user_id;
+    @Column(name = "user_id")
+    private long id;
     private String firstName;
     private String lastName;
     private String email;
@@ -30,12 +31,12 @@ public class User {
         this.userBooks = userBooks;
     }
 
-    public long getUser_id() {
-        return user_id;
+    public long getUserId() {
+        return id;
     }
 
-    public void setUser_id(long user_id) {
-        this.user_id = user_id;
+    public void setUserId(long id) {
+        this.id = id;
     }
 
     public String getPassword() {
