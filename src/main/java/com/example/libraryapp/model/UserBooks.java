@@ -1,4 +1,5 @@
 package com.example.libraryapp.model;
+import com.example.libraryapp.enums.BookStatus;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
@@ -15,6 +16,7 @@ public class UserBooks {
     @JoinColumn(name = "user_id")
     @JsonBackReference
     private User user;
+    private BookStatus bookStatus;
 
     public UserBooks() {
 
@@ -23,6 +25,28 @@ public class UserBooks {
     public UserBooks(Book book, User user) {
         this.book = book;
         this.user = user;
+    }
+
+    public UserBooks(Book book, User user, BookStatus bookStatus) {
+        this.book = book;
+        this.user = user;
+        this.bookStatus = bookStatus;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public BookStatus getStatus() {
+        return bookStatus;
+    }
+
+    public void setStatus(BookStatus bookStatus) {
+        this.bookStatus = bookStatus;
     }
 
     public long getUserBook_id() {

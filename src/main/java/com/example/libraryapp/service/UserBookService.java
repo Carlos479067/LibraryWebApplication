@@ -1,5 +1,6 @@
 package com.example.libraryapp.service;
 import com.example.libraryapp.dto.BookDto;
+import com.example.libraryapp.enums.BookStatus;
 import com.example.libraryapp.model.Book;
 import com.example.libraryapp.model.User;
 import com.example.libraryapp.model.UserBooks;
@@ -23,13 +24,18 @@ public class UserBookService {
         this.userRepository = userRepository;
     }
 
-    public UserBooks addBookToCollection(Long userId, BookDto request) {
+    public UserBooks addBookToCollection(Long userId, BookDto request, BookStatus bookStatus) {
 
         String bookId =  request.getIsbn();
 
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User " + userId + " not found"));
         Book book = booksRepository.findByIsbn(bookId).orElseThrow(() -> new RuntimeException("Book " + request.getIsbn() +  " not found"));
-        UserBooks userBooks = new UserBooks(book, user);
+
+        if(userBooksRepository.findByBookStatusAndBookAndUser(bookStatus, book, user).isPresent()) {
+            throw new RuntimeException("Book already added to " + bookStatus);
+        }
+
+        UserBooks userBooks = new UserBooks(book, user, bookStatus);
         return userBooksRepository.save(userBooks);
     }
 
