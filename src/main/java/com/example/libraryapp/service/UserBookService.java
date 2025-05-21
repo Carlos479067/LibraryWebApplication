@@ -39,9 +39,9 @@ public class UserBookService {
         return userBooksRepository.save(userBooks);
     }
 
-    public List<BookDto> returnBookCollection(Long userId) {
+    public List<BookDto> returnUserCollection(Long userId, BookStatus bookStatus) {
 
-        List<UserBooks> userBooks = userBooksRepository.findByUser_Id(userId);
+        List<UserBooks> userBooks = userBooksRepository.findByBookStatusAndUser_Id(bookStatus, userId);
 
         return userBooks.stream().map(this::mapToBook).collect(Collectors.toList());
 

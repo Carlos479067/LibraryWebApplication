@@ -21,7 +21,7 @@ public class UserBookController {
     }
 
     @GetMapping("/users/{userId}/books")
-    public List<BookDto> returnBookCollection(@PathVariable Long userId) {
-        return userBookService.returnBookCollection(userId);
+    public List<BookDto> returnUserCollection(@PathVariable Long userId, @RequestParam BookStatus bookStatus) {
+        return userBookService.returnUserCollection(userId, bookStatus);
     }
 }
