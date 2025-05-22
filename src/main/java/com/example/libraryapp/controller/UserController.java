@@ -1,5 +1,4 @@
-package com.example.libraryapp.controller;
-import com.example.libraryapp.dto.UserDto;
+package com.example.libraryapp.controller;import com.example.libraryapp.dto.UserDto;
 import com.example.libraryapp.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
