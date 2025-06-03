@@ -6,6 +6,7 @@ import com.example.libraryapp.model.UserBooks;
 import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 import java.util.Optional;
+import static com.example.libraryapp.enums.BookStatus.OWNED;
 
 public interface UserBooksRepository extends CrudRepository<UserBooks, Long> {
 
@@ -17,5 +18,6 @@ public interface UserBooksRepository extends CrudRepository<UserBooks, Long> {
 
     Optional<UserBooks> findByUser_IdAndBook_IsbnAndBookStatus(long userId, String isbn, BookStatus bookStatus);
 
+    int countByBookStatusAndUser_Id(BookStatus bookStatus, long userId);
 
 }

@@ -14,6 +14,8 @@ public class User {
     private String lastName;
     private String email;
     private String password;
+    private int ownedBooks;
+    private int wishListBooks;
     @OneToMany(mappedBy = "user")
     @JsonManagedReference
     private List<UserBooks> userBooks;
@@ -23,12 +25,14 @@ public class User {
     }
 
     public User(String firstName, String lastName,
-                String email, String password, List<UserBooks> userBooks) {
+                String email, String password, List<UserBooks> userBooks, int ownedBooks, int wishListBooks) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.userBooks = userBooks;
+        this.ownedBooks = ownedBooks;
+        this.wishListBooks = wishListBooks;
     }
 
     public long getUserId() {
@@ -69,5 +73,37 @@ public class User {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public List<UserBooks> getUserBooks() {
+        return userBooks;
+    }
+
+    public void setUserBooks(List<UserBooks> userBooks) {
+        this.userBooks = userBooks;
+    }
+
+    public int getWishListBooks() {
+        return wishListBooks;
+    }
+
+    public void setWishListBooks(int wishListBooks) {
+        this.wishListBooks = wishListBooks;
+    }
+
+    public int getOwnedBooks() {
+        return ownedBooks;
+    }
+
+    public void setOwnedBooks(int ownedBooks) {
+        this.ownedBooks = ownedBooks;
     }
 }

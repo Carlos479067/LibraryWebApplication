@@ -6,15 +6,19 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String email;
+    private int ownedBooks;
+    private int wishListBooks;
 
     public UserDto() {
 
     }
 
-    public UserDto(String firstName, String lastName, String email) {
+    public UserDto(String firstName, String lastName, String email, int ownedBooks, int wishListBooks) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.ownedBooks = ownedBooks;
+        this.wishListBooks = wishListBooks;
     }
 
     public long getId() {
@@ -47,6 +51,22 @@ public class UserDto {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public int getOwnedBooks() {
+        return ownedBooks;
+    }
+
+    public void setOwnedBooks(int ownedBooks) {
+        this.ownedBooks = ownedBooks;
+    }
+
+    public int getWishListBooks() {
+        return wishListBooks;
+    }
+
+    public void setWishListBooks(int wishListBooks) {
+        this.wishListBooks = wishListBooks;
     }
 }
 
