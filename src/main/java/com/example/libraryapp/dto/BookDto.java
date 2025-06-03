@@ -7,19 +7,21 @@ public class BookDto {
     private String title;
     private String description;
     private String genre;
-    private String thumbnail;
+    private String thumbNail;
+    private String publishDate;
     private List<String> authors;
 
     public BookDto() {
 
     }
 
-    public BookDto(String isbn, String title, String description, String genre, String thumbnail, List<String> authors) {
+    public BookDto(String isbn, String title, String description, String genre, String thumbNail, String publishDate, List<String> authors) {
         this.isbn = isbn;
         this.title = title;
         this.genre = genre;
-        this.thumbnail = thumbnail;
+        this.thumbNail = thumbNail;
         this.authors = authors;
+        this.publishDate = publishDate;
         this.description = description;
     }
 
@@ -30,6 +32,14 @@ public class BookDto {
     public void setIsbn(String isbn) {
 
         this.isbn = isbn;
+    }
+
+    public String getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(String publishDate) {
+        this.publishDate = publishDate;
     }
 
     public String getTitle() {
@@ -49,11 +59,11 @@ public class BookDto {
     }
 
     public String getThumbnail() {
-        return thumbnail;
+        return thumbNail;
     }
 
     public void setThumbnail(String thumbnail) {
-        this.thumbnail = thumbnail;
+        this.thumbNail = thumbnail;
     }
 
     public String getGenre() {
