@@ -1,9 +1,6 @@
 package com.example.libraryapp.model;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import org.hibernate.Length;
-
-import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -15,7 +12,7 @@ public class Book {
     private List<String> authors;
     private String title;
     private String genre;
-    @Column(length=1000)
+    @Column(length=4000)
     private String description;
     private String publishDate;
     private String thumbNail;
