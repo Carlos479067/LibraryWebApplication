@@ -11,6 +11,7 @@ public class UserBooks {
     private long userBook_id;
     @ManyToOne
     @JoinColumn(name = "bookId")
+    @JsonBackReference
     private Book book;
     @ManyToOne
     @JoinColumn(name = "user_id")
