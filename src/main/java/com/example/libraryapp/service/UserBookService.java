@@ -9,6 +9,7 @@ import com.example.libraryapp.repository.UserBooksRepository;
 import com.example.libraryapp.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -17,11 +18,13 @@ public class UserBookService {
     private final UserBooksRepository userBooksRepository;
     private final BooksRepository booksRepository;
     private final UserRepository userRepository;
+    private final BooksService booksService;
 
-    public UserBookService(UserBooksRepository userBooksRepository, BooksRepository booksRepository, UserRepository userRepository) {
+    public UserBookService(UserBooksRepository userBooksRepository, BooksRepository booksRepository, UserRepository userRepository, BooksService booksService) {
         this.userBooksRepository = userBooksRepository;
         this.booksRepository = booksRepository;
         this.userRepository = userRepository;
+        this.booksService = booksService;
     }
 
     public UserBooks addBookToCollection(Long userId, BookDto request, BookStatus bookStatus) {
@@ -29,12 +32,37 @@ public class UserBookService {
         String bookId =  request.getIsbn();
 
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User " + userId + " not found"));
-        Book book = booksRepository.findByIsbn(bookId).orElseThrow(() -> new RuntimeException("Book " + request.getIsbn() +  " not found"));
 
-        if(userBooksRepository.findByBookStatusAndBookAndUser(bookStatus, book, user).isPresent()) {
-            throw new RuntimeException("Book already added to " + bookStatus);
+        if(userBooksRepository.findByUser_IdAndBook_IsbnAndBookStatus(userId, bookId, BookStatus.OWNED).isPresent()) {
+            throw new RuntimeException("This book is already in your owned collection.");
+        }
+        if (userBooksRepository.findByUser_IdAndBook_IsbnAndBookStatus(userId, bookId, BookStatus.WISHLIST).isPresent()) {
+            throw new RuntimeException("This book is already in your wishlist.");
         }
 
+        Book book = booksRepository.findByIsbn(bookId).orElse(null);
+
+        if(book == null) {
+            Optional<BookDto> searchIsbn = booksService.searchIsbn(bookId);
+            if(searchIsbn.isPresent()) {
+                BookDto fetchedBook = searchIsbn.get();
+                book = new Book();
+
+                book.setIsbn(fetchedBook.getIsbn());
+                book.setTitle(fetchedBook.getTitle());
+                book.setThumbNail(fetchedBook.getThumbnail());
+                book.setDescription(fetchedBook.getDescription());
+                book.setAuthors(fetchedBook.getAuthors());
+                book.setGenre(fetchedBook.getGenre());
+                book.setPublishDate(fetchedBook.getPublishDate());
+
+                booksRepository.save(book);
+            }
+            else
+            {
+                throw new RuntimeException("Book with ISBN " + bookId + " could not be found.");
+            }
+        }
         UserBooks userBooks = new UserBooks(book, user, bookStatus);
         return userBooksRepository.save(userBooks);
     }
@@ -57,6 +85,7 @@ public class UserBookService {
         dto.setDescription(book.getDescription());
         dto.setGenre(book.getGenre());
         dto.setAuthors(book.getAuthors());
+        dto.setPublishDate(book.getPublishDate());
 
         return dto;
     }

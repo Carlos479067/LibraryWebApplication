@@ -12,11 +12,12 @@ public class UserBookController {
     private final UserBookService userBookService;
 
     public UserBookController(UserBookService userBookService) {
+
         this.userBookService = userBookService;
     }
 
-    @PostMapping("/users/{userId}/{bookStatus}")
-    public UserBooks addBookToCollection(@RequestBody BookDto request, @PathVariable Long userId, @PathVariable BookStatus bookStatus) {
+    @PostMapping("/users/{userId}/books")
+    public UserBooks addBookToCollection(@RequestBody BookDto request, @PathVariable Long userId, @RequestParam BookStatus bookStatus) {
          return userBookService.addBookToCollection(userId, request, bookStatus);
     }
 
