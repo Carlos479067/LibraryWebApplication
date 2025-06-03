@@ -15,5 +15,7 @@ public interface UserBooksRepository extends CrudRepository<UserBooks, Long> {
 
     List<UserBooks> findByBookStatusAndUser_Id(BookStatus bookStatus, long userId);
 
+    Optional<UserBooks> findByUser_IdAndBook_IsbnAndBookStatus(long userId, String isbn, BookStatus bookStatus);
+
 
 }
