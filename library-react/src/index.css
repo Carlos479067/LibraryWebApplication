@@ -36,7 +36,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -184,14 +184,34 @@ nav a:hover {
 
 .btn-collection {
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  width: 58%;
+  padding-left: 35%;
 }
 
 #wishlist-btn {
-  background-color: #36454F;
   margin-bottom: 25px;
-  width: 100px;
-  height: 100px;
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  color: black;
+  border: 2px solid black;
+  background-color: #85B09A;
 }
+
+#owned-btn {
+  margin-bottom: 25px;
+  color: black;
+  border: 2px solid black;
+  background-color: #98817B;
+}
+
+#wishlist-img {
+  width: 20px;
+  height: 15px;
+  padding-left: 10px;
+}
+
+#owned-img {
+  width: 20px;
+  height: 15px;
+  padding-left: 10px;
+}
+

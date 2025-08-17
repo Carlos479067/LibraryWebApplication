@@ -1,4 +1,3 @@
-import {Children} from "react";
 
 export default function Main({searchResults}) {
 
@@ -57,8 +56,14 @@ export default function Main({searchResults}) {
                         {/*<p>{bookObj.description}</p>*/}
                     </div>
                     <div className={"btn-collection"}>
-                        <button id={"wishlist-btn"}>Wishlist</button>
-                        <button>Owned</button>
+                        <button id={"wishlist-btn"}>
+                            <span>Add to Wishlist</span>
+                            <img src={"src/assets/star.png"} alt={"Star"} id={"wishlist-img"}/>
+                        </button>
+                        <button id={"owned-btn"}>
+                            <span>Add to Owned Collection</span>
+                            <img src={"src/assets/Owned.png"} alt={"Checkmark"} id={"owned-img"}/>
+                        </button>
                     </div>
                 </div>
             </li>
