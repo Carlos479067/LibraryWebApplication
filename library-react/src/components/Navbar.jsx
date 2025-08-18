@@ -44,15 +44,15 @@ export default function NavBar({updateState}) {
     return (
             <nav>
                 <ul>
-                    <li><a href={"#home"}><h3>Homepage</h3></a></li>
+                    <li><a href={"#home"}><h4>Homepage</h4></a></li>
                     <li className={"dropdown"}>
-                        <a href={"#collection"}><h3>Collections</h3></a>
+                        <a href={"#collection"}><h4>Collections</h4></a>
                         <ul className={"dropdown-content"}>
-                            <li><a href={"#wishlist"}>Wish List</a></li>
-                            <li><a href={"#wishlist"}>Owned List</a></li>
+                            <li><a href={"#wishlist"}><h4>Wish List</h4></a></li>
+                            <li><a href={"#wishlist"}><h4>Owned List</h4></a></li>
                         </ul>
                     </li>
-                    <li><a href={"#browse"}><h3>Browse Books</h3></a></li>
+                    <li><a href={"#browse"}><h4>Browse Books</h4></a></li>
                 </ul>
                 <form className={"search-bar"} onSubmit={HandleSearchButton}>
                     <input className={"search"} type={"text"} placeholder={"Search books..."} onChange={HandleQuery}></input>
