@@ -25,7 +25,7 @@ public class BooksService {
     }
 
     public List<BookDto> getAllBooks() {
-        return fetchFromGoogleBooks("fiction");
+        return fetchFromGoogleBooks("Fantasy");
     }
 
     public List<BookDto> searchBooks(String query) {

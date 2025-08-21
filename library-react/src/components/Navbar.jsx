@@ -1,6 +1,7 @@
-import {useState} from "react";
+import React, {useState} from "react";
+import {NavLink} from "react-router-dom";
 
-export default function NavBar({updateState}) {
+export default function NavBar({updateState, resetState}) {
 
     const [bookSearch, setBookSearch] = useState("");
 
@@ -38,26 +39,29 @@ export default function NavBar({updateState}) {
                 //Handle errors
                 console.error(`There was a problem with fetch request: ${error.message}`);
             })
-
     }
 
     return (
             <nav>
                 <ul>
-                    <li><a href={"#home"}><h4>Homepage</h4></a></li>
+                    <li><NavLink className={({isActive}) => isActive ? "active button" : ""} to={"/"} onClick={resetState}><h4>Homepage</h4></NavLink></li>
                     <li className={"dropdown"}>
                         <a href={"#collection"}><h4>Collections</h4></a>
                         <ul className={"dropdown-content"}>
-                            <li><a href={"#wishlist"}><h4>Wish List</h4></a></li>
-                            <li><a href={"#wishlist"}><h4>Owned List</h4></a></li>
+                            <li><a href={"#wishlist"}>Wish List</a></li>
+                            <li><a href={"#Owned"}>Owned List</a></li>
                         </ul>
                     </li>
                     <li><a href={"#browse"}><h4>Browse Books</h4></a></li>
                 </ul>
-                <form className={"search-bar"} onSubmit={HandleSearchButton}>
-                    <input className={"search"} type={"text"} placeholder={"Search books..."} onChange={HandleQuery}></input>
-                    <button className={"btn-search"} type={"submit"}>Go</button>
-                </form>
+                <div>
+                    <form className={"search-bar"} onSubmit={HandleSearchButton}>
+                        <NavLink id={"account-link"}><img id={"account-icon"} src={"src/assets/user2Icon.png"} alt={"Account"}/><p>User Account</p></NavLink>
+                        <input className={"search"} type={"text"} placeholder={"Search books..."}
+                               onChange={HandleQuery}></input>
+                        <button className={"btn-search"} type={"submit"}>Go</button>
+                    </form>
+                </div>
             </nav>
     )
 }

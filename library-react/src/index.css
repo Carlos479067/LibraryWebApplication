@@ -41,7 +41,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  filter: drop-shadow(0 0 0.2rem #aaddff)
 }
 button:focus,
 button:focus-visible {
@@ -130,10 +130,9 @@ nav a {
 .dropdown-content {
   display: none;
   position: absolute;
-  padding: 0 8px;
-  z-index: 1;
   background-color: rgb(161,124,100);
   font-family: 'Libre Baskerville', serif;
+  font-weight: bold;
 }
 
 .dropdown:hover .dropdown-content {
@@ -172,7 +171,7 @@ nav a:hover {
   font-weight: bold;
 }
 
-/* Main Body */
+/* Home Body */
 
 #main-body {
   background-color: bisque;
@@ -215,3 +214,31 @@ nav a:hover {
   padding-left: 10px;
 }
 
+/* If button is active */
+
+.active.button {
+  background-color: rgb(131,94,70);
+}
+
+/* User Account Icon */
+
+#account-icon {
+  width: 33px;
+}
+
+#account-link {
+  background: none;
+  transform: none;
+  opacity: 1;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#account-link p {
+  margin: 0; /* optional small gap */
+}
+
+#account-link:hover {
+  filter: drop-shadow(0 0 0.2rem #aaddff)
+}
