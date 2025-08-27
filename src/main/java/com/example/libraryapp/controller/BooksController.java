@@ -18,7 +18,6 @@ public class BooksController {
 
     @GetMapping("/books")
     public List<BookDto> getAllBooks() {
-
         return booksService.getAllBooks();
     }
 

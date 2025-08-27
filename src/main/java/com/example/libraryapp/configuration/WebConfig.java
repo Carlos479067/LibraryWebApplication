@@ -5,6 +5,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebMvc
@@ -25,5 +26,11 @@ public class WebConfig implements WebMvcConfigurer {
     public RestTemplate addRestTemplate() {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate;
+    }
+
+    @Bean
+    public BCryptPasswordEncoder addBCryptPasswordEncoder() {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return bCryptPasswordEncoder;
     }
 }

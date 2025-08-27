@@ -1,4 +1,5 @@
 import {useEffect} from "react";
+import {NavLink} from "react-router-dom";
 
 export default function Home({searchResults, setRandomState, randomBooks}) {
 
@@ -11,15 +12,30 @@ export default function Home({searchResults, setRandomState, randomBooks}) {
         const slicedShuffledBooks = copyRandomBooks.sort(() => Math.random() - 0.5).slice(0, 5);
 
         contentToRender =
-                <section>
-                        <MapBooks books={slicedShuffledBooks}/>
+            <>
+                <div className={"card"}>
+                    <h2>Sign Up</h2>
+                    <img src={"src/assets/accountBackground.png"} alt={"Account Sign In"}/>
+                    <div>
+                        <NavLink to={"/signup"}><button>Sign Up with email</button></NavLink>
+                    </div>
+                    <p>Already a member?<a href={"Sign"}> Sign In</a></p>
+                </div>
+                <section id={"renderRandomBooks"}>
+                    <h2 style={{fontWeight: "bold"}}>Explore new books</h2>
+                    <MapBooks books={slicedShuffledBooks}/>
                 </section>
+            </>
     } else {
         contentToRender =
         <main id={"main-body"}>
             <MapBooks books={searchResults} />
         </main>
     }
+
+    // function addBookToCollection() {
+    //
+    // }
 
     function getRandomBooks() {
         //Build the full url
@@ -97,8 +113,8 @@ export default function Home({searchResults, setRandomState, randomBooks}) {
     }, []);
 
     return (
-        <>
+        <div id={"main-body"}>
             {contentToRender}
-        </>
+        </div>
     )
 }

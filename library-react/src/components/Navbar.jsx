@@ -56,7 +56,7 @@ export default function NavBar({updateState, resetState}) {
                 </ul>
                 <div>
                     <form className={"search-bar"} onSubmit={HandleSearchButton}>
-                        <NavLink id={"account-link"}><img id={"account-icon"} src={"src/assets/user2Icon.png"} alt={"Account"}/><p>User Account</p></NavLink>
+                        <NavLink id={"account-link"}><img id={"account-icon"} src={"src/assets/user2Icon.png"} alt={"Account"}/></NavLink>
                         <input className={"search"} type={"text"} placeholder={"Search books..."}
                                onChange={HandleQuery}></input>
                         <button className={"btn-search"} type={"submit"}>Go</button>

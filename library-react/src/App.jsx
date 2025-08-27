@@ -3,8 +3,9 @@ import './index.css'
 import NavBar from '../src/components/Navbar.jsx';
 import Header from "./components/Header.jsx";
 import Home from "./pages/Home.jsx";
+import SignUp from "./pages/SignUp.jsx";
 import {useState} from "react";
-import {Route, Router, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
             <NavBar updateState={UpdateState} resetState={resetState}/>
             <Routes>
               <Route path={"/"} element={<Home searchResults={searchResults} setRandomState={setRandomState} randomBooks={randomBooks}/>}/>
+                <Route path={"/signup"} element={<SignUp />}/>
             </Routes>
           </>
   )
