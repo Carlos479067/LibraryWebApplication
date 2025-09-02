@@ -16,7 +16,7 @@ public class SecurityConfig  {
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         // Anyone can use "/users" endpoint without logging in
-                        .requestMatchers("/signup","/books").permitAll()
+                        .requestMatchers("/signup","/books", "/users/**").permitAll()
                         // Everything else requires logging in
                         .anyRequest().authenticated()
                 );

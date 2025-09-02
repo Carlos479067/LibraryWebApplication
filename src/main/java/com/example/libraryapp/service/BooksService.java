@@ -25,7 +25,7 @@ public class BooksService {
     }
 
     public List<BookDto> getAllBooks() {
-        return fetchFromGoogleBooks("and");
+        return fetchFromGoogleBooks("The lord of the rings");
     }
 
     public List<BookDto> searchBooks(String query) {
@@ -33,7 +33,7 @@ public class BooksService {
     }
 
     public Optional<BookDto> searchIsbn(String isbn) {
-        String baseUrl = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn + "&key=" + apiKey;
+        String baseUrl = "https://www.googleapis.com/books/v1/volumes?q=" + isbn + "&key=" + apiKey;
         Map<String, Object> response = restTemplate.getForObject(baseUrl, Map.class);
 
         if(response.containsKey("items")) {
@@ -56,7 +56,7 @@ public class BooksService {
     }
 
     List<BookDto> fetchFromGoogleBooks(String query) {
-        String baseUrl = "https://www.googleapis.com/books/v1/volumes?q=" + query + "&maxResults=20&key=" + apiKey;
+        String baseUrl = "https://www.googleapis.com/books/v1/volumes?q=" + query + "&maxResults=10&key=" + apiKey;
         Map<String, Object> response = restTemplate.getForObject(baseUrl, Map.class);
         List<BookDto> bookList = new ArrayList<>();
 

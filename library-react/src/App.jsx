@@ -2,6 +2,7 @@ import './App.css'
 import './index.css'
 import NavBar from '../src/components/Navbar.jsx';
 import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
 import Home from "./pages/Home.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import {useState} from "react";
@@ -32,6 +33,7 @@ function App() {
               <Route path={"/"} element={<Home searchResults={searchResults} setRandomState={setRandomState} randomBooks={randomBooks}/>}/>
                 <Route path={"/signup"} element={<SignUp />}/>
             </Routes>
+              <Footer/>
           </>
   )
 }

@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #FAF7F3;
+  background-color: white;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -96,10 +96,55 @@ header img {
   width: 150px;
 }
 
+/* Footer CSS */
+
+.footer {
+  background-color: #ede7e3;
+  font-family: 'Libre Baskerville', serif;
+  width: 100%;
+}
+
+.footer ul {
+  color: black;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+
+/* SignUp Page */
+
+.signUp {
+  color: black;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.signUpForm {
+  border: 1px solid black;
+}
+
+.signUp label {
+  display: block;
+  margin-top: 25px;
+  font-size: larger;
+
+}
+
+.signUp input {
+  background-color: white;
+  border-radius: 5px;
+  margin-left: 10px;
+  color: black;
+  font-size: small;
+}
+
 /* NavBar CSS */
 
 nav {
-  background-color: rgb(161,124,100);
+  background-color: #ede7e3;
   display: flex;            /* Make navbar items sit in a row */
   justify-content: space-between; /* Push links left, search bar right */
   align-items: center;      /* Vertically center everything */
@@ -117,7 +162,7 @@ nav a {
   display: block;
   text-decoration: none;
   padding: 1px 25px;
-  color: white;
+  color: black;
   font-family: 'Libre Baskerville', serif;
 }
 
@@ -137,12 +182,12 @@ nav a {
 
 .dropdown:hover .dropdown-content {
   display: block;
-  background-color: rgb(161,124,100);
+  background-color: #ede7e3;
 }
 
 nav a:hover {
-  background-color: rgb(131,94,70);
-  color: white;
+  background-color: rgb(200,231,227);
+  color: black;
 }
 
 /* SEARCH BAR */
@@ -174,7 +219,7 @@ nav a:hover {
 /* Home Body */
 
 #main-body {
-  background-color: #85B09A;
+  background-color: #f9f9f9;
   margin-top: 0;
   padding-top: 10px;
   font-family: 'Libre Baskerville', serif;
@@ -218,13 +263,14 @@ nav a:hover {
 /* If button is active */
 
 .active.button {
-  background-color: rgb(131,94,70);
+  background-color: #ede7e3;
 }
 
 /* User Account Icon */
 
 #account-icon {
   width: 30px;
+  color: black;
 }
 
 #account-link {
@@ -292,6 +338,7 @@ nav a:hover {
   right: 60px;
   left: 60px;
   bottom: 185px;
+  background-color: #604a3c;
 }
 
 .card h2 {
@@ -311,8 +358,7 @@ nav a:hover {
 }
 
 .card a {
-  color: #747bff;
-
+  color: black;
 }
 
 .card img {
