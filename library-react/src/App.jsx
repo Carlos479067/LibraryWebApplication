@@ -26,15 +26,17 @@ function App() {
     }
 
   return (
-          <>
+          <div id={"pageWrapper"}>
             <Header/>
             <NavBar updateState={UpdateState} resetState={resetState}/>
-            <Routes>
-              <Route path={"/"} element={<Home searchResults={searchResults} setRandomState={setRandomState} randomBooks={randomBooks}/>}/>
-                <Route path={"/signup"} element={<SignUp />}/>
-            </Routes>
+              <div id={"mainContentWrapper"}>
+                <Routes>
+                  <Route path={"/"} element={<Home searchResults={searchResults} setRandomState={setRandomState} randomBooks={randomBooks}/>}/>
+                    <Route path={"/signup"} element={<SignUp />}/>
+                </Routes>
+              </div>
               <Footer/>
-          </>
+          </div>
   )
 }
 

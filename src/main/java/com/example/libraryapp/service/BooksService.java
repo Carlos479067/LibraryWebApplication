@@ -18,6 +18,8 @@ public class BooksService {
     @Value("${google.books.api.key}")
     private String apiKey;
 
+    private String array[] = {"Stephen King", "Star Wars", "Harry Potter", "Blake Crouch", "Patrick Rothfuss"};
+
     public BooksService(BooksRepository booksRepository, RestTemplate restTemplate) {
 
         this.booksRepository = booksRepository;
@@ -25,7 +27,7 @@ public class BooksService {
     }
 
     public List<BookDto> getAllBooks() {
-        return fetchFromGoogleBooks("The lord of the rings");
+        return fetchFromGoogleBooks(array[(int)(Math.random()*((array.length - 1) + 1))]);
     }
 
     public List<BookDto> searchBooks(String query) {

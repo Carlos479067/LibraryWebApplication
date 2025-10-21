@@ -9,59 +9,81 @@ export default function Home({searchResults, setRandomState, randomBooks}) {
         //Make a copy of randomBooks array
         const copyRandomBooks = [...randomBooks];
         //Randomize books and render first 5
-        const slicedShuffledBooks = copyRandomBooks.sort(() => Math.random() - 0.5).slice(0, 5);
+        const slicedShuffledBooks = copyRandomBooks.sort(() => Math.random() - 0.5).slice(0, 4);
 
         contentToRender =
-            <>
-                <div className={"card"}>
-                    <h2>Sign Up</h2>
-                    <img src={"src/assets/accountBackground.png"} alt={"Account Sign In"}/>
-                    <div>
-                        <NavLink to={"/signup"}><button>Sign Up with email</button></NavLink>
-                    </div>
-                    <p>Already a member?<a href={"Sign"}> Sign In</a></p>
-                </div>
+            <div className={"mainContent"}>
                 <section id={"renderRandomBooks"}>
                     <h2 style={{fontWeight: "bold"}}>Explore new books</h2>
                     <MapBooks books={slicedShuffledBooks}/>
                 </section>
-            </>
+                <section className={"card"}>
+                    <h2>Sign Up</h2>
+                    <img src={"src/assets/accountBackground.png"} alt={"Account Sign In"}/>
+                    <div>
+                        <NavLink to={"/signup"}>
+                            <button>Sign Up with email</button>
+                        </NavLink>
+                    </div>
+                    <p>Already a member?<a href={"Sign"}> Sign In</a></p>
+                </section>
+            </div>
     } else {
         contentToRender =
-        <main id={"main-body"}>
-            <MapBooks books={searchResults} />
-        </main>
+            <div id={"main-body"}>
+                <MapBooks books={searchResults}/>
+            </div>
     }
 
-    // function addBookToCollection() {
-    //
-    // }
-
-    function getRandomBooks() {
-        //Build the full url
-        const getURL = "http://localhost:8080/books";
-        // Create request object
-        const requestObj = {
-            method: "GET",
-        }
-        // Send request using fetch
-        fetch(getURL, requestObj)
-            .then(response => {
-                //Check if response is ok
+    useEffect(() => {
+            // Build the full url
+            const getURL = "http://localhost:8080/books";
+            // Create request object
+            const requestObj = {
+                method: "GET",
+            }
+        async function fetchRandomBooks() {
+            try {
+                const response = await fetch(getURL, requestObj);
                 if(!response.ok) {
                     throw new Error(`Network response error: ${response.status}`);
                 }
-                return response.json();
-            })
-            .then(data => {
-                //Handle the data
+                const data = await response.json();
                 setRandomState(data);
-            })
-            .catch(error => {
-                //Handle errors
+            } catch(error) {
                 console.error(`There was a problem with fetch request: ${error.message}`);
-            })
-    }
+            }
+        }
+        // Call the function
+        fetchRandomBooks();
+    },[]); // Empty array runs once
+
+
+    // function getRandomBooks() {
+    //     //Build the full url
+    //     const getURL = "http://localhost:8080/books";
+    //     // Create request object
+    //     const requestObj = {
+    //         method: "GET",
+    //     }
+    //     // Send request using fetch
+    //     fetch(getURL, requestObj)
+    //         .then(response => {
+    //             //Check if response is ok
+    //             if(!response.ok) {
+    //                 throw new Error(`Network response error: ${response.status}`);
+    //             }
+    //             return response.json();
+    //         })
+    //         .then(data => {
+    //             //Handle the data
+    //             setRandomState(data);
+    //         })
+    //         .catch(error => {
+    //             //Handle errors
+    //             console.error(`There was a problem with fetch request: ${error.message}`);
+    //         })
+    // }
 
     function MapBooks({books}) {
         const BooksWithImg = books.filter(book => book.thumbnail);
@@ -108,13 +130,9 @@ export default function Home({searchResults, setRandomState, randomBooks}) {
         )
     }
 
-    useEffect(() => {
-        getRandomBooks();
-    }, []);
-
     return (
-        <div id={"main-body"}>
+        <main id={"main-body"}>
             {contentToRender}
-        </div>
+        </main>
     )
 }

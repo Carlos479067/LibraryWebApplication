@@ -2,7 +2,7 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
+  width: 100%;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: white;
@@ -13,15 +13,23 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a:hover {
-  color: #535bf2;
-}
-
 body {
   padding: 0;
   margin: 0;
-  min-width: 320px;
+}
+
+#pageWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   min-height: 100vh;
+}
+
+#mainContentWrapper {
+  flex: 1;
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 h1 {
@@ -78,41 +86,27 @@ button:focus-visible {
 /* Header CSS */
 
 .header {
+  background-image: url("src/assets/header-img.png");
+  background-size: cover;
+  background-position: 15% 15%;
+  color: #EDEADE;
+}
+
+.headerContent {
+  max-width: 1350px;
   display: flex;
-  align-items: center;
-  position: relative;
-  background-color: rgb(221,184,160);
-  justify-content: center;
+  justify-self: center;
+  margin: 0 auto;
 }
 
 header h1 {
   font-family: 'Libre Baskerville', serif;
   color: #F9F6EE;
-}
-
-header img {
-  position: absolute;
-  left: -2px;
-  width: 150px;
-}
-
-/* Footer CSS */
-
-.footer {
-  background-color: #ede7e3;
-  font-family: 'Libre Baskerville', serif;
   width: 100%;
 }
 
-.footer ul {
-  color: black;
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin: 0;
-  padding: 0;
-  max-width: 100%;
+header img {
+  width: 150px;
 }
 
 /* SignUp Page */
@@ -143,86 +137,98 @@ header img {
 
 /* NavBar CSS */
 
-nav {
+.navbar {
   background-color: #ede7e3;
-  display: flex;            /* Make navbar items sit in a row */
-  justify-content: space-between; /* Push links left, search bar right */
-  align-items: center;      /* Vertically center everything */
 }
 
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+.navContent {
+  max-width: 1350px;
+  margin: 0 auto;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #604a3c;
 }
 
-nav a {
-  margin: 0;
-  display: block;
+.navbarDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbarDiv ul {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbarDiv a {
+  color: black;
   text-decoration: none;
-  padding: 1px 25px;
-  color: black;
-  font-family: 'Libre Baskerville', serif;
+  cursor: pointer;
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-  font-family: 'Libre Baskerville', serif;
+.navbarDiv a:hover {
+  color: #98817B;
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: rgb(161,124,100);
-  font-family: 'Libre Baskerville', serif;
-  font-weight: bold;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-  background-color: #ede7e3;
-}
-
-nav a:hover {
-  background-color: rgb(200,231,227);
-  color: black;
-}
 
 /* SEARCH BAR */
-
-.search-bar {
+.searchBar {
   display: flex;
   align-items: center;
-  padding: 3px 0;
-  margin: 5px;
+  margin-right: 25px;
 }
 
-.search {
-  background-color: white;
-  padding: 3px 0;
-  margin: 5px;
-  border-radius: 5px;
-  color: black;
-  text-align: start;
+.searchBar input {
   width: 200px;
+  margin-right: 10px;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
 }
 
-.btn-search {
-  padding: 2px 12px;
-  background-color: #604a3c;
-  color: white;
-  font-weight: bold;
+.searchBar button {
+  padding: 1px 10px 3px;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.searchBar button {
+
+}
+
+/* Footer */
+
+.footer {
+  width: 100%;
+  background-color: #ede7e3;
+}
+
+.footerContent {
+  max-width: 1350px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0 auto;
+  color: #604a3c;
+}
+
+.footerContent ul {
+  list-style-type: none;
 }
 
 /* Home Body */
 
 #main-body {
-  background-color: #f9f9f9;
   margin-top: 0;
   padding-top: 10px;
   font-family: 'Libre Baskerville', serif;
+}
+
+#main-body ul {
+  list-style-type: none;
 }
 
 /* wishlist, owned button container */
@@ -292,14 +298,15 @@ nav a:hover {
 
 /* Randombooks Render */
 
+.mainContent {
+  display: flex;
+  justify-content: space-between;
+}
+
 #renderRandomBooks {
-  display: block;
   background-color: #E5E1DA;
-  margin-top: 50px;
-  padding-top: 0;
+  margin: 25px 0;
   max-width: 510px;
-  max-height: 375px;
-  overflow: auto;
   text-align: center;
   color: black;
   width: fit-content;
@@ -323,7 +330,7 @@ nav a:hover {
   height: 350px;
   overflow: hidden;
   position: relative;
-  margin-left: auto;
+  margin: 25px 0;
   background-color: #E5E1DA;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
@@ -367,4 +374,9 @@ nav a:hover {
   object-fit: cover; /* keep aspect ratio while covering */
   transition: transform 0.3s ease;
   opacity: 0.9;
+}
+
+#owned-btn span {
+  display: flex;
+  justify-content: center;
 }
